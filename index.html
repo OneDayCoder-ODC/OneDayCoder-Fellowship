@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OneDayCoder - Internship Program</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="images/IMG_7741[1].PNG"
+      type="image/x-icon"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Bowlby+One&family=Erica+One&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+    </style>
+    <style>
+      :root {
+        --primary-color: #0056b3;
+        --secondary-color: #ffffff;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--secondary-color);
+        margin: 0;
+        padding: 0;
+        color: #333;
+        scroll-behavior: smooth;
+      }
+      .bowlby-one-regular {
+        font-family: "Bowlby One", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        color: #0164c9;
+      }
+
+      /* Navbar */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #0056b3;
+        opacity: 90%;
+        color: white;
+        padding: 12px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
+
+      .logo {
+        font-weight: bold;
+        font-size: 1.5em;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-links li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .menu-icon {
+        display: none;
+        font-size: 26px;
+        cursor: pointer;
+      }
+
+      /* Responsive Navbar */
+      #menu-toggle {
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        .menu-icon {
+          display: block;
+        }
+
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 60px;
+          right: 20px;
+          background: #0d1b2a;
+          padding: 15px;
+          border-radius: 8px;
+          width: 180px;
+        }
+
+        #menu-toggle:checked ~ .nav-links {
+          display: flex;
+        }
+
+        .nav-links li {
+          margin: 10px 0;
+        }
+      }
+      .logo {
+        height: 45px;
+      }
+
+      /* Hero */
+      .hero {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 20px;
+        background: linear-gradient(145deg, #e6f0ff, #ffffff);
+      }
+
+      .hero-text {
+        flex: 1 1 300px;
+        max-width: 600px;
+        padding: 20px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.8em;
+        font-weight: 700;
+        color: #0056b3;
+      }
+
+      .hero-text p {
+        font-size: 1.1em;
+        color: #444;
+        margin-top: 20px;
+      }
+
+      .hero img {
+        flex: 1 1 300px;
+        max-width: 450px;
+        width: 100%;
+        border-radius: 15px;
+        animation: float 4s ease-in-out infinite;
+      }
+      @media (max-width: 768px) {
+        .hero-content {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .hero-text h1 {
+          font-size: 2em;
+        }
+
+        .hero-text h2 {
+          font-size: 1.2em;
+        }
+
+        .hero-text p {
+          font-size: 0.95em;
+        }
+
+        .hero-image {
+          max-width: 90%;
+          margin: 0 auto;
+        }
+      }
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      /* Section Styling */
+      section {
+        padding: 60px 20px;
+        text-align: center;
+      }
+
+      section h2 {
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        font-size: 2em;
+      }
+
+      section p {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1.1em;
+        color: #555;
+      }
+
+      /* Pricing Cards */
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 40px;
+      }
+
+      .card {
+        background: var(--secondary-color);
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        flex: 1 1 250px;
+        max-width: 320px;
+        text-align: left;
+        border-top: 5px solid var(--primary-color);
+        position: relative;
+      }
+
+      .card h2 {
+        font-size: 1.6em;
+        text-align: center;
+        margin: 10px 0;
+        color: #333;
+      }
+
+      .card ul {
+        list-style: none;
+        padding-left: 0;
+        font-size: 0.95em;
+        color: #444;
+      }
+
+      .card ul li {
+        padding: 5px 0;
+      }
+
+      .apply-btn {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1em;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .apply-btn:hover {
+        background-color: #333;
+        color: white;
+      }
+
+      .featured-ribbon {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: #0056b3;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 5px;
+        font-size: 0.8em;
+      }
+
+      /* Refer Box */
+      .refer {
+        background: linear-gradient(145deg, #e6f0ff, #ffffff);
+        padding: 30px 20px;
+        border-radius: 20px;
+        max-width: 700px;
+        margin: 0 auto 40px;
+        box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2);
+        text-align: center;
+      }
+
+      .refer-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .refer-form input[type="email"] {
+        flex: 1 1 200px;
+        padding: 12px 16px;
+        border-radius: 10px;
+        border: 1.5px solid #ccc;
+        font-size: 1em;
+      }
+
+      .refer-btn {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1em;
+      }
+
+      /* Footer */
+      .footer {
+        background: #0056b3;
+        color: #ffffff;
+        padding: 20px 30px;
+        text-align: center;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+
+      .footer-logo img {
+        width: 60px;
+        height: auto;
+      }
+
+      .footer-logo span {
+        font-size: 3.2rem;
+        font-weight: bold;
+        color: #ffffff;
+        letter-spacing: 0.5px;
+        font-family: "Bowlby One", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        opacity: 20%;
+      }
+      @media (max-width: 600px) {
+        .footer-logo {
+          flex-direction: column;
+        }
+        .footer-logo span {
+          font-size: 2.6rem;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        nav ul {
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        .hero {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .hero img {
+          margin-top: 20px;
+          max-width: 90%;
+        }
+
+        .cards {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+      /* FAQ Accordion */
+      .faq-container {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .faq-item {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 123, 255, 0.1);
+        overflow: hidden;
+        transition: 0.3s ease;
+      }
+
+      .faq-question {
+        padding: 15px 20px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1.05em;
+        color: #0056b3;
+        background: #eaf2ff;
+        position: relative;
+      }
+
+      .faq-question::after {
+        content: "+";
+        position: absolute;
+        right: 20px;
+        font-size: 1.2em;
+        transition: transform 0.3s ease;
+      }
+
+      .faq-item.active .faq-question::after {
+        content: "-";
+      }
+
+      .faq-answer {
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        color: #444;
+        background: #f8fbff;
+        transition: max-height 0.4s ease, padding 0.3s ease;
+      }
+
+      .faq-item.active .faq-answer {
+        padding: 15px 20px;
+        max-height: 300px;
+      }
+      .payment-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .gst {
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <nav class="navbar">
+  <img src="images/IMG_7741[1].PNG" class="logo" alt="OneDayCoder Logo" />
+  <input type="checkbox" id="menu-toggle">
+  <label for="menu-toggle" class="menu-icon">&#9776;</label>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#plans">Plans</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#refer">Refer</a></li>
+  </ul>
+</nav> -->
+
+    <!-- Hero Section -->
+    <section class="hero" id="home" data-aos="fade-up">
+      <div class="hero-text" data-aos="fade-right" data-aos-delay="200">
+        <h1 class="bowlby-one-regular">
+          Not Just an Internship - A Launchpad to Your Tech Career
+        </h1>
+        <!-- <h2>Build real-world skills. Get certified. Stand out to recruiters.</h2> -->
+        <p>
+          At OneDayCoder, we don’t just offer virtual certificates — we offer
+          real impact. With guided projects, personalized mentorship, and
+          outcome-driven training, we help students turn ambition into
+          achievement. Whether you're a beginner or a final-year student, your
+          career upgrade starts here.
+        </p>
+      </div>
+      <img
+        src="images/teamwork-concept-landing-page.png"
+        alt="Internship Team"
+        data-aos="zoom-in"
+        data-aos-delay="400"
+      />
+    </section>
+
+    <!-- Plans Section -->
+    <section id="plans">
+      <h2 class="bowlby-one-regular">Our Internship Plans</h2>
+      <p>
+        Choose a plan that suits your goals. Whether you want to boost your
+        resume or gain hands-on project experience, OneDayCoder has the perfect
+        option for you.
+      </p>
+
+      <div class="cards">
+        <!-- Starter Plan -->
+        <div class="card" data-aos="flip-left">
+          <h3 style="color: teal" class="bowlby-one-regular">Starter Plan</h3>
+          <h2 class="bowlby-one-regular">₹1,499 <span class="gst">+ 3% GST</span></h2>
+          <ul>
+            <li>✅ Virtual Internship Certificate (Credential ID, QR Code)</li>
+            <li>✅ Offer Letter from Company Mail Address</li>
+            <li>❌ Geo Located Photos</li>
+            <li>❌ Payslip / Evaluation Report</li>
+            <li>❌ Training & Guidance</li>
+            <li>❌ LinkedIn/Resume Support</li>
+          </ul>
+          <div class="payment-button">
+
+         
+          <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_R1JdgxDd9iCpBV" async> </script> </form>
+         </div></div>
+
+        <!-- Growth Plan -->
+        <div class="card" data-aos="flip-up" style="border: 2px solid #0056b3">
+          <div class="featured-ribbon">Most Popular</div>
+          <h3 style="color: green" class="bowlby-one-regular">Growth Plan</h3>
+          <h2 class="bowlby-one-regular">₹1,999 <span class="gst">+ 3% GST</span></h2>
+          <ul>
+            <li>✅ Virtual Internship Certificate (Credential ID, QR Code)</li>
+            <li>✅ Offer Letter from Company Mail Address</li>
+            <li>✅ Geo Located Photos</li>
+            <li>✅ Internal Evaluation Report</li>
+            <li>✅ Payslips</li>
+            <li>
+              ✅ 1 Week Intensive Training (HTML, CSS, JS) with Interview
+              Questions
+            </li>
+            <li>✅ LinkedIn Optimization</li>
+            <li>✅ Resume Preparation</li>
+          </ul>
+          <div class="payment-button">
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_R1JlGLYikLKuNp" async> </script> </form>
+          </div>
+        </div>
+
+        <!-- Premium Plan -->
+        <div class="card" data-aos="flip-right">
+          <h3 style="color: orange" class="bowlby-one-regular">Premium Plan</h3>
+          <h2 class="bowlby-one-regular">₹2,499 <span class="gst">+ 3% GST</span></h2>
+          <ul>
+            <li>
+              ✅ Virtual + Physical Certificate (QR Code, Company Seal,
+              Credential ID)
+            </li>
+            <li>✅ Offer Letter from Company Mail Address</li>
+            <li>✅ Geo Located Photos</li>
+            <li>✅ Payslips</li>
+            <li>✅ Internal Evaluation Report</li>
+            <li>✅ Official Internship ID Card</li>
+            <li>✅ Email Box (Custom Internship Mail ID)</li>
+            <li>
+              ✅ 1 Week Intensive Training (HTML, CSS, JS) + 1 Week Project Work
+              with Guidance
+            </li>
+            <li>✅ LinkedIn Optimization</li>
+            <li>✅ Resume Preparation</li>
+          </ul>
+          <div class="payment-button">
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_R1JpjMWVGcwDoZ" async> </script> </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Refer Section -->
+    <div class="refer" class="bowlby-one-regular" data-aos="fade-up">
+      <h3>🎁 Refer a Friend & Help Them Start Coding!</h3>
+      <p>
+        Share the learning and earn rewards! If you refer a friend and they
+        enroll with us, you get
+        <strong class="bowlby-one-regular">₹150/-</strong> as a thank-you bonus
+        🚀
+      </p>
+      <button
+        class="refer-btn"
+        onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdOUJgK2pGw904Yuf3isq0O7rITPAzv8U2oXdv59GHH-heDMA/viewform?usp=dialog', '_blank')"
+      >
+        📨 Refer a Friend Now
+      </button>
+    </div>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+      <h2 class="bowlby-one-regular">Frequently Asked Questions</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">
+            📄 What is meant by Internal Evaluation Report?
+          </div>
+          <div class="faq-answer">
+            It’s a formal summary of your performance during the internship,
+            including mentor evaluation based on tasks and learning.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">📦 What is a Physical Certificate?</div>
+          <div class="faq-answer">
+            A printed, company-sealed certificate with QR verification and
+            credential ID, delivered to your address.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            📚 What is covered in the One Week Training?
+          </div>
+          <div class="faq-answer">
+            Front-end development: HTML, CSS, JavaScript, with live sessions and
+            interview preparation kits.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">🪪 Will I get a Physical ID Card?</div>
+          <div class="faq-answer">
+            Yes, Premium plan interns receive a printed and branded internship
+            ID card.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            ✅ Will OneDayCoder verify my internship if my college contacts you?
+          </div>
+          <div class="faq-answer">
+            Yes, our team responds to college or university verifications via
+            email or phone.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            🏠 Can I opt for an offline internship?
+          </div>
+          <div class="faq-answer">
+            Yes, we offer hybrid models where you can work remotely with
+            optional offline sessions.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">🕒 When will I receive my certificate?</div>
+          <div class="faq-answer">
+            Virtual certificates are delivered in 2–3 days. Physical ones take
+            7–10 business days.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            💰 When do I get the ₹150 referral reward?
+          </div>
+          <div class="faq-answer">
+            After your referred friend successfully enrolls, you’ll receive ₹150
+            within 3–5 working days.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            📨 How do I get access to the custom internship email?
+          </div>
+          <div class="faq-answer">
+            Premium interns are issued a personalized email ID within 48 hours
+            of onboarding.
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2 class="bowlby-one-regular">Get in Touch</h2>
+      <p>Have questions? We're here to help! Reach out to us via email</p>
+      <p><strong>Email:</strong> support@onedaycoder.in</p>
+    </section>
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="images/logo.PNG" alt="OneDayCoder Logo" />
+          <span>OneDayCoder</span>
+        </div>
+        <p>&copy; 2025 OneDayCoder. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1000 });
+    </script>
+    <script>
+      const faqItems = document.querySelectorAll(".faq-item");
+
+      faqItems.forEach((item) => {
+        item.querySelector(".faq-question").addEventListener("click", () => {
+          const isActive = item.classList.contains("active");
+
+          // Close all
+          faqItems.forEach((i) => i.classList.remove("active"));
+
+          // Toggle current
+          if (!isActive) item.classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>
